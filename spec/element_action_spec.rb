@@ -15,6 +15,10 @@ describe 'ElementAction' do
     it 'returns a hash' do
       expect(Dummy.actions).to be_a(Hash)
     end
+
+    it 'defaults to base actions' do
+      expect(Dummy.actions).to eq(Puppis::ElementAction::BASE_ACTIONS)
+    end
   end
 
   describe '#custom_action' do
