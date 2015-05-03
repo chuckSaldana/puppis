@@ -1,3 +1,4 @@
+require_relative 'puppis/identifiers'
 require_relative 'puppis/element_action'
 require_relative 'puppis/elements'
 require_relative 'puppis/config'
