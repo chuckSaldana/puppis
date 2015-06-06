@@ -19,4 +19,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rspec'
   s.add_development_dependency 'calabash-cucumber'
   s.add_development_dependency 'calabash-android'
+  s.add_development_dependency 'codeclimate-test-reporter'
 end
