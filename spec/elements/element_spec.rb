@@ -37,6 +37,7 @@ describe Puppis::Elements::Element do
       it 'touches the element' do
         allow(subject).to receive(:query) { [{'text' => 'fe fi fo fum'}] }
         expect(subject).to receive(:wait_tap).once
+        expect(subject).to receive(:wait_for_none_animating)
         subject.touch
       end
     end
