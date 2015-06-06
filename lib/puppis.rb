@@ -9,18 +9,19 @@ module Puppis
     element_classes.each do |element_class|
       base.class.send(:define_method, Puppis.class_to_method_name(element_class)) do |*args|
         field_name = args[0]
-        Puppis.add_element_methods base, field_name, element_class
+        identifier_parts = args[1]
+        Puppis.add_element_methods base, field_name, element_class, identifier_parts
       end
     end
 
   end
 
-  def self.add_element_methods(base, field_name, element_class_name)
+  def self.add_element_methods(base, field_name, element_class_name, identifier_parts)
     element_class = Puppis::Elements.const_get(element_class_name)
 
     element_class.actions.each do |action_name, func|
       base.send(:define_method, Puppis.merge_field_and_action(field_name, action_name)) do |*inputs|
-        func.call(*[base, *inputs])
+        func.call(*[element_class.new(identifier_parts), *inputs])
       end
     end
   end
