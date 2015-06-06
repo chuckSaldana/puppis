@@ -5,6 +5,7 @@ module Puppis
 
       class << self
         def generate(parts)
+          validate_parts parts
           if parts.has_key? :query
             # query always always always overrides anything else
             parts[:query]

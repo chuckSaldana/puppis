@@ -7,6 +7,8 @@ describe Puppis do
     element :test
   }}
 
+  before(:all) { Puppis::Config.platform = :ios}
+
   describe '#class_to_method_name' do
     context 'with one word' do
       it 'converts pascal casing to snake casing' do

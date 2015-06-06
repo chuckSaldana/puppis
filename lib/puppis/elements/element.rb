@@ -1,7 +1,7 @@
 module Puppis
   module Elements
     class Element
-      include Puppis::ElementAction
+      extend Puppis::ElementAction
 
       attr_reader :platform
 
@@ -9,15 +9,13 @@ module Puppis
         @platform = Puppis::Config.platform
 
         if @platform == :ios
-          class_eval do
-            include Calabash::Cucumber::Core
-            include Calabash::Cucumber::KeyboardHelpers
-            include Calabash::Cucumber::KeychainHelpers
-            include Calabash::Cucumber::TestsHelpers
-            include Calabash::Cucumber::WaitHelpers
-          end
-        else
-          raise "TODO"
+          self.class.send :include, Calabash::Cucumber::Core
+          self.class.send :include, Calabash::Cucumber::KeyboardHelpers
+          self.class.send :include, Calabash::Cucumber::KeychainHelpers
+          self.class.send :include, Calabash::Cucumber::TestsHelpers
+          self.class.send :include, Calabash::Cucumber::WaitHelpers
+        elsif @platform == :android
+          self.class.send :include, Calabash::Android::Operations
         end
       end
     end

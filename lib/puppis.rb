@@ -5,21 +5,28 @@ require_relative 'puppis/config'
 
 module Puppis
   def self.included(base)
-    classes = Puppis::Elements.constants.select { |c| Puppis::Elements.const_get(c).is_a? Class }
 
-    classes.each do |klass|
-      base.class.send(:define_method, Puppis.class_to_method_name(klass)) do |*args|
+    element_classes.each do |element_class|
+      base.class.send(:define_method, Puppis.class_to_method_name(element_class)) do |*args|
         field_name = args[0]
-        cls = Puppis::Elements.const_get(klass).new
-
-        cls.actions.each do |action_name, func|
-          base.send(:define_method, Puppis.merge_field_and_action(field_name, action_name)) do |*args|
-            func.call(*[cls, *args])
-          end
-        end
+        Puppis.add_element_methods base, field_name, element_class
       end
     end
 
+  end
+
+  def self.add_element_methods(base, field_name, element_class_name)
+    element_class = Puppis::Elements.const_get(element_class_name)
+
+    element_class.actions.each do |action_name, func|
+      base.send(:define_method, Puppis.merge_field_and_action(field_name, action_name)) do |*inputs|
+        func.call(*[base, *inputs])
+      end
+    end
+  end
+
+  def self.element_classes
+    Puppis::Elements.constants.select { |c| Puppis::Elements.const_get(c).is_a? Class }
   end
 
   def self.class_to_method_name(klass)

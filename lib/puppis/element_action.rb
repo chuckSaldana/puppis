@@ -1,5 +1,6 @@
 module Puppis
   module ElementAction
+    class NoDefaultSet; end
 
     BASE_ACTIONS =       {
         'touch_{{name}}'    => ->(me){me.touch},
@@ -14,6 +15,12 @@ module Puppis
 
     def actions
       @actions ||= BASE_ACTIONS
+    end
+
+    def default_class(platform = nil, default = NoDefaultSet)
+      @default_class ||= {}
+      @default_class[platform] = default unless default == NoDefaultSet
+      @default_class[platform]
     end
   end
 end
