@@ -1,3 +1,3 @@
 # puppis
 
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ehedrick/puppis?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ehedrick/puppis?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Code Climate](https://codeclimate.com/github/ehedrick/puppis/badges/gpa.svg)](https://codeclimate.com/github/ehedrick/puppis) [![Test Coverage](https://codeclimate.com/github/ehedrick/puppis/badges/coverage.svg)](https://codeclimate.com/github/ehedrick/puppis/coverage) [![Build Status](https://travis-ci.org/ehedrick/puppis.svg?branch=develop)](https://travis-ci.org/ehedrick/puppis)

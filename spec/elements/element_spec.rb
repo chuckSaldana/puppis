@@ -30,7 +30,7 @@ describe Puppis::Elements::Element do
     context 'when the element doesn\'t exist' do
       it 'raises an error' do
         allow(subject).to receive(:query) { [] }
-        expect{subject.touch}.to raise_exception Puppis::Elements::ElementNotFoundError
+        expect{subject.element_touch}.to raise_exception Puppis::Elements::ElementNotFoundError
       end
     end
     context 'when the element exists' do
@@ -38,7 +38,7 @@ describe Puppis::Elements::Element do
         allow(subject).to receive(:query) { [{'text' => 'fe fi fo fum'}] }
         expect(subject).to receive(:wait_tap).once
         expect(subject).to receive(:wait_for_none_animating)
-        subject.touch
+        subject.element_touch
       end
     end
   end
