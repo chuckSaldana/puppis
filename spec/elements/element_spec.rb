@@ -43,11 +43,24 @@ describe Puppis::Elements::Element do
     end
   end
 
-  describe '#wait_for' do
+  describe '#element_wait_for' do
     context 'when the element does not exist' do
       it 'raises an exception' do
         allow(subject).to receive(:query) { [] }
-        expect{subject.wait_for}.to raise_exception Exception
+        allow(subject).to receive(:wait_for) { raise Exception }
+        expect{subject.element_wait_for}.to raise_exception Exception
+      end
+    end
+    context 'when the element does exist' do
+      it 'returns true' do
+        allow(subject).to receive(:query) { [{}] }
+        expect(subject.element_wait_for).to eq true
+      end
+    end
+    context 'with options' do
+      it 'passes the options into wait' do
+        expect(subject).to receive(:wait_for).with({foo: 'bar'})
+        subject.element_wait_for(foo: 'bar')
       end
     end
   end

@@ -31,4 +31,11 @@ describe 'ElementAction' do
     end
   end
 
+  describe 'BASE_ACTIONS' do
+    it 'defines base actions' do
+      action_names = %w(touch_{{name}} {{name}}_element wait_for_{{name}} {{name}}_text {{name}}?)
+      expect(Puppis::ElementAction::BASE_ACTIONS.keys).to include(*action_names)
+    end
+  end
+
 end

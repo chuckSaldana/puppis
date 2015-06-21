@@ -27,7 +27,7 @@ module Puppis
         wait_for_none_animating
       end
 
-      def wait_for(options = nil)
+      def element_wait_for(options = nil)
         if options
           wait_for(options) { not query(@identifier).empty? }
         else
