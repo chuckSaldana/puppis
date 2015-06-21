@@ -4,6 +4,7 @@ module Puppis
       extend Puppis::ElementAction
 
       attr_reader :platform, :identifier
+      default_class :ios, '*'
 
       def initialize(identifier_parts=nil)
         @platform = Puppis::Config.platform
