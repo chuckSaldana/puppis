@@ -34,7 +34,7 @@ module Puppis
           end
 
           unless parts.has_key?(:class) || parts.has_key?(:query)
-            raise Puppis::Identifier::ClassPartMissingError
+            raise Puppis::Identifier::ClassPartMissingError.new "Supplied parts: #{parts}"
           end
 
           true

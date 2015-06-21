@@ -20,7 +20,7 @@ module Puppis
     element_class = Puppis::Elements.const_get(element_class_name)
 
     parts = {class: element_class.default_class(Puppis::Config.platform)}
-    parts.merge!(identifier_parts) if identifier_parts
+    parts = parts.merge(identifier_parts) if identifier_parts
 
     element_class.actions.each do |action_name, func|
       base.send(:define_method, Puppis.merge_field_and_action(field_name, action_name)) do |*inputs|

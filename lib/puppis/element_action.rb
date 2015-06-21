@@ -3,12 +3,11 @@ module Puppis
     class NoDefaultSet; end
 
     BASE_ACTIONS =       {
-        'touch_{{name}}'    => ->(me){
-          me.element_touch
-        },
+        'touch_{{name}}'    => ->(me){me.element_touch},
         '{{name}}_element'  => ->(me){me},
         'wait_for_{{name}}' => ->(me){me.wait_for},
-        '{{name}}_text'     => ->(me){me.text}
+        '{{name}}_text'     => ->(me){me.text},
+        '{{name}}?'         => ->(me){me.exists?}
     }
 
     def custom_action(method_name, func)
