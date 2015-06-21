@@ -18,26 +18,26 @@ module Puppis
 
       def text
         raise Puppis::Elements::ElementNotFoundError unless exists?
-        query(identifier).first.fetch('text')
+        query(@identifier).first.fetch('text')
       end
 
-      def touch
+      def element_touch
         raise Puppis::Elements::ElementNotFoundError unless exists?
-        wait_tap(identifier)
+        wait_tap(@identifier)
         wait_for_none_animating
       end
 
       def wait_for(options = nil)
         if options
-          wait_for(options) { not query(identifier).empty? }
+          wait_for(options) { not query(@identifier).empty? }
         else
-          wait_for { not query(identifier).empty? }
+          wait_for { not query(@identifier).empty? }
         end
         true
       end
 
       def exists?
-        !query(identifier).empty?
+        !query(@identifier).empty?
       end
 
       private

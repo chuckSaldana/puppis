@@ -3,7 +3,9 @@ module Puppis
     class NoDefaultSet; end
 
     BASE_ACTIONS =       {
-        'touch_{{name}}'    => ->(me){me.touch},
+        'touch_{{name}}'    => ->(me){
+          me.element_touch
+        },
         '{{name}}_element'  => ->(me){me},
         'wait_for_{{name}}' => ->(me){me.wait_for},
         '{{name}}_text'     => ->(me){me.text}

@@ -1,8 +1,11 @@
 module Puppis
   module Elements
     class Button < Puppis::Elements::Element
-      custom_action 'foo', ->(me){puts me}
       default_class :ios, 'UIButton'
+
+      def text
+        query("#{@identifier} label").first.fetch('text')
+      end
     end
   end
 end
