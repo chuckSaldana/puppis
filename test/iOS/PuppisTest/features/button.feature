@@ -16,10 +16,6 @@ Feature: Puppis should recognize buttons
     Given I am testing buttons
     Then I should be able to find a button identified by label
 
-  Scenario: I should be able to find a button based on text
-    Given I am testing buttons
-    Then I should be able to find a button identified by text
-
   Scenario: I should be able to find a button based on index
     Given I am testing buttons
     Then I should be able to find a button identified by index

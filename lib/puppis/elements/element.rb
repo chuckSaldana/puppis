@@ -38,6 +38,7 @@ module Puppis
       end
 
       def exists?
+        Puppis.log.debug "Looking for an element with the query: `#{@identifier}`"
         !query(@identifier).empty?
       end
 

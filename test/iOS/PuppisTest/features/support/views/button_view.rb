@@ -8,8 +8,7 @@ class ButtonView < BaseView
 
   button :button_by_class,  class: 'UISegment'
   button :button_by_marked, marked: 'button label'
-  button :button_by_label,  label: 'Button label'
-  button :button_by_text,   text: 'Button with no accessibility label'
+  button :button_by_label,  label: 'button label'
   button :button_by_index,  index: 0
   button :button_by_query,  query: 'UIButton index:0'
 
