@@ -23,6 +23,7 @@ module Puppis
 
       def element_touch
         raise Puppis::Elements::ElementNotFoundError unless exists?
+        Puppis.log.debug "Attempting to touch `#{@identifier}`"
         wait_tap(@identifier)
         wait_for_none_animating
       end
