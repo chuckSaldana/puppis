@@ -2,12 +2,15 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Button-->
         <scene sceneID="BtF-7r-SbI">
             <objects>
-                <viewController id="Mqv-Yu-HC6" customClass="ButtonViewController" customModule="PuppisTest" sceneMemberID="viewController">
+                <viewController id="Mqv-Yu-HC6" customClass="ButtonViewController" customModule="PuppisTest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GZy-9I-Xft"/>
                         <viewControllerLayoutGuide type="bottom" id="5tN-lw-v1L"/>
@@ -16,14 +19,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fN-bh-L1K">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fN-bh-L1K">
                                 <rect key="frame" x="16" y="28" width="204" height="30"/>
                                 <accessibility key="accessibilityConfiguration" label="button label"/>
                                 <state key="normal" title="Button with accessibility label">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="buttonClicked:" destination="Mqv-Yu-HC6" eventType="touchUpInside" id="yKR-PR-SvF"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bY8-QN-ilf">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SjQ-9o-Nfj">
+                                <rect key="frame" x="16" y="104" width="189" height="29"/>
+                                <segments>
+                                    <segment title="Sement one"/>
+                                    <segment title="Segment two"/>
+                                </segments>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touched" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M96-xs-c1u">
+                                <rect key="frame" x="266" y="32" width="74" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="74" id="BUC-Bk-GFa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bY8-QN-ilf">
                                 <rect key="frame" x="16" y="66" width="225" height="30"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <bool key="isElement" value="NO"/>
@@ -32,17 +54,26 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SjQ-9o-Nfj">
-                                <rect key="frame" x="16" y="104" width="189" height="29"/>
-                                <segments>
-                                    <segment title="Sement one"/>
-                                    <segment title="Segment two"/>
-                                </segments>
-                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9fN-bh-L1K" firstAttribute="top" secondItem="GZy-9I-Xft" secondAttribute="bottom" constant="8" symbolic="YES" id="Esf-m9-yy3"/>
+                            <constraint firstItem="SjQ-9o-Nfj" firstAttribute="top" secondItem="bY8-QN-ilf" secondAttribute="bottom" constant="8" symbolic="YES" id="IUI-3S-cOJ"/>
+                            <constraint firstItem="bY8-QN-ilf" firstAttribute="leading" secondItem="c6b-Lw-c5y" secondAttribute="leadingMargin" id="KOL-Ir-y39"/>
+                            <constraint firstItem="M96-xs-c1u" firstAttribute="baseline" secondItem="9fN-bh-L1K" secondAttribute="firstBaseline" id="LN2-bv-1Gd"/>
+                            <constraint firstItem="bY8-QN-ilf" firstAttribute="leading" secondItem="9fN-bh-L1K" secondAttribute="leading" id="Qgv-m6-8aC"/>
+                            <constraint firstItem="bY8-QN-ilf" firstAttribute="leading" secondItem="SjQ-9o-Nfj" secondAttribute="leading" id="bpt-au-A7T"/>
+                            <constraint firstItem="M96-xs-c1u" firstAttribute="top" secondItem="GZy-9I-Xft" secondAttribute="bottom" constant="12" id="gDq-H5-Rlr"/>
+                            <constraint firstItem="M96-xs-c1u" firstAttribute="baseline" secondItem="9fN-bh-L1K" secondAttribute="baseline" id="hgL-ba-J4u"/>
+                            <constraint firstItem="bY8-QN-ilf" firstAttribute="top" secondItem="9fN-bh-L1K" secondAttribute="bottom" constant="8" symbolic="YES" id="o8Q-Mz-lOp"/>
+                            <constraint firstItem="M96-xs-c1u" firstAttribute="leading" secondItem="9fN-bh-L1K" secondAttribute="trailing" constant="46" id="ti2-nv-z5w"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Button" image="first" id="pm8-vT-X0s"/>
+                    <connections>
+                        <outlet property="buttonClickedLabel" destination="M96-xs-c1u" id="cWu-lC-Cwn"/>
+                        <outlet property="firstButton" destination="9fN-bh-L1K" id="biO-ZI-Lcg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rl2-Cq-duY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

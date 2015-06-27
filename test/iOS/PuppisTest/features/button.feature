@@ -23,3 +23,8 @@ Feature: Puppis should recognize buttons
   Scenario: I should be able to find a button based on query
     Given I am testing buttons
     Then I should be able to find a button identified by query
+
+  Scenario: I should be able to touch buttons
+    Given I am testing buttons
+    When I touch a button
+    Then I should see the button was touched

@@ -12,4 +12,6 @@ class ButtonView < BaseView
   button :button_by_index,  index: 0
   button :button_by_query,  query: 'UIButton index:0'
 
+  label :button_touched, marked: 'Touched'
+
 end
