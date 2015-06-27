@@ -26,7 +26,7 @@ describe Puppis::Elements::Element do
     end
   end
 
-  describe '#touch' do
+  describe '#element_touch' do
     context 'when the element doesn\'t exist' do
       it 'raises an error' do
         allow(subject).to receive(:query) { [] }
@@ -74,6 +74,17 @@ describe Puppis::Elements::Element do
     it 'returns false if the element does not exist' do
       allow(subject).to receive(:query) { [] }
       expect(subject.exists?).to be_falsey
+    end
+  end
+
+  describe '#value=' do
+    it 'sets the value of the element' do
+      allow(subject).to receive(:query){[{}]}
+      allow(subject).to receive(:element_touch){}
+      allow(subject).to receive(:tap_keyboard_action_key){}
+      allow(subject).to receive(:wait_for_none_animating){}
+      expect(subject).to receive(:keyboard_enter_text).with('some text')
+      subject.value = 'some text'
     end
   end
 end

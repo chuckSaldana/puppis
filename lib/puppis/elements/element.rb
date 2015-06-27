@@ -20,6 +20,7 @@ module Puppis
         raise Puppis::Elements::ElementNotFoundError unless exists?
         query(@identifier).first.fetch('text')
       end
+      alias_method :value, :text
 
       def element_touch
         raise Puppis::Elements::ElementNotFoundError unless exists?
@@ -40,6 +41,13 @@ module Puppis
       def exists?
         Puppis.log.debug "Looking for an element with the query: `#{@identifier}`"
         !query(@identifier).empty?
+      end
+
+      def value=(new_value)
+        element_touch
+        keyboard_enter_text new_value
+        tap_keyboard_action_key
+        wait_for_none_animating
       end
 
       private
